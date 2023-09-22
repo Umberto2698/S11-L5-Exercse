@@ -11,6 +11,9 @@ const initialState = {
   hip_hop: {
     content: [],
   },
+  player: {
+    content: [],
+  },
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -37,6 +40,11 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         hip_hop: { ...state.hip_hop, content: [...state.hip_hop.content, action.payload] },
+      };
+    case "PLAYER":
+      return {
+        ...state,
+        player: { ...state.player, content: action.payload },
       };
     default:
       return state;

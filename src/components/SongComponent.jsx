@@ -1,9 +1,20 @@
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 const SongComponent = ({ track }) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="py-3 trackHover">
-      <Link to="/" className="trackHover px-3" style={{ color: "white" }}>
+    <div
+      className="py-3 trackHover"
+      onClick={() =>
+        dispatch({
+          type: "PLAYER",
+          payload: track,
+        })
+      }
+    >
+      <Link className="trackHover px-3" style={{ color: "white" }}>
         {track.title_short}
       </Link>
       <small className="duration" style={{ color: "white" }}>
