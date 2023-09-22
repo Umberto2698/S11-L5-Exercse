@@ -10,7 +10,7 @@ const AlbumArtComponent = ({ album }) => {
       <div className=" text-center">
         <p className="artist-name">{album.artist.name}</p>
       </div>
-      <div className="mt-5 text-center">
+      <div className="mt-3 text-center">
         <Button id="btnPlay" variant="success" type="button">
           Play
         </Button>

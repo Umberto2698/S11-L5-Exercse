@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const SideBarComponent = () => {
-  const [query, setQuery] = useState();
+  const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -31,14 +31,16 @@ const SideBarComponent = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto d-flex flex-column -justify-content-between align-items-start">
-              <Nav.Link id="nav-link" className="d-flex align-items-center">
+              <Nav.Item className=" nav-link d-flex align-items-center">
                 <HouseDoorFill width={20} height={24}></HouseDoorFill>
-                <span className="ms-2">Home</span>
-              </Nav.Link>
-              <Nav.Link id="nav-link" className="d-flex align-items-center">
+                <Link className=" p-0 nav-link text-decoration-none" to="/">
+                  <span className="ms-2">Home</span>
+                </Link>
+              </Nav.Item>
+              <Nav.Item className=" nav-link d-flex align-items-center">
                 <BookFill width={20} height={24}></BookFill>
                 <span className="ms-2">Your Library</span>
-              </Nav.Link>
+              </Nav.Item>
               <Form className="mt-3" onSubmit={(e) => handleSubmit(e)}>
                 <div className="d-flex align-items-center justify-content-center mb-2">
                   <Form.Control
@@ -60,28 +62,21 @@ const SideBarComponent = () => {
 
         <Container className="justify-content-center">
           <div className="nav-btn d-flex flex-column justify-content-between align-items-center ">
-            <Button
-              size="sm"
-              variant="light"
-              className="text-black signup-btn border-white py-2 rounded-pill "
-              type="button"
-            >
+            <Button size="sm" variant="light" id="signup-btn" className=" py-2 rounded-pill " type="button">
               Sign Up
             </Button>
-            <Button
-              size="sm"
-              variant="black"
-              className="text-white border-white rounded-pill py-2 login-btn"
-              type="button"
-            >
+            <Button size="sm" variant="black" id="login-btn" className=" rounded-pill py-2 " type="button">
               Login
             </Button>
             <div className="d-flex align-items-center justify-content-center">
-              <Link id="bottom-link" to="/" className="text-decoration-none">
-                Cookie policy&nbsp; |
+              <Link to="/" className="bottom-link">
+                Cookie policy
               </Link>
-              <Link id="bottom-link" to="/" className="text-decoration-none">
-                &nbsp; Privacy
+              <span className="mx-1" style={{ color: "rgb(145, 145, 145)" }}>
+                |
+              </span>
+              <Link to="/" className="bottom-link">
+                Privacy
               </Link>
             </div>
           </div>

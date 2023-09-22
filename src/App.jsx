@@ -17,8 +17,8 @@ function App() {
             <SideBarComponent></SideBarComponent>
             <Routes>
               <Route path="/" element={<MainComponent></MainComponent>}></Route>
-              <Route path="/artist:artistId" element={<ArtistComponent></ArtistComponent>}></Route>
-              <Route path="/album:albumId" element={<AlbumComponent></AlbumComponent>}></Route>
+              <Route path="/artist/:artistId" element={<ArtistComponent></ArtistComponent>}></Route>
+              <Route path="/album/:albumId" element={<AlbumComponent></AlbumComponent>}></Route>
             </Routes>
             <PlayerComponent></PlayerComponent>
           </BrowserRouter>

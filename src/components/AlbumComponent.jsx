@@ -2,7 +2,7 @@ import { Col, Row } from "react-bootstrap";
 import TopBarComponent from "./TopBarComponent";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AlbumCardComponent from "./AlbumCardComponent";
+import AlbumArtComponent from "./AlbumArtComponent";
 import SongComponent from "./SongComponent";
 
 const AlbumComponent = () => {
@@ -42,16 +42,16 @@ const AlbumComponent = () => {
   return (
     <Col xs={12} md={{ span: 9, offset: 3 }} className="mainPage">
       <TopBarComponent></TopBarComponent>
-      <Row>
-        <Col md={3} className="pt-5 tetx-center" id="img-container">
-          {albumObj && <AlbumCardComponent album={albumObj}></AlbumCardComponent>}
-          <Col md={8} className="p-5">
-            <Row>
-              <Col md={10} className="pb-5" id="trackList">
-                {albumObj && albumObj.tracks.data.map((el) => <SongComponent track={el}></SongComponent>)}
-              </Col>
-            </Row>
-          </Col>
+      <Row className="d-flex align-items-start justify-content-start mt-5">
+        <Col md={3} className=" text-center" id="img-container">
+          {albumObj && <AlbumArtComponent album={albumObj}></AlbumArtComponent>}
+        </Col>
+        <Col md={7} className="px-5 align-items-start">
+          <Row>
+            <Col md={10} className="pb-5 w-100" id="trackList">
+              {albumObj && albumObj.tracks.data.map((el, i) => <SongComponent track={el} key={i}></SongComponent>)}
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Col>

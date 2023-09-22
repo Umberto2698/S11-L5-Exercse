@@ -2,7 +2,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import TopBarComponent from "./TopBarComponent";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import AlbumCardComponent from "./AlbumCardComponent";
+import CardComponent from "./CardComponent";
 
 const ArtistComponent = () => {
   const params = useParams();
@@ -26,16 +26,7 @@ const ArtistComponent = () => {
         const artist = await response.json();
         setArtistObj(artist);
 
-        // displaying the playButton
-
-        // displaying the followButton
-
-        // setting the artist name
-
-        // setting the followers section
-
         const tracksResponse = await fetch(
-          // await the fetch of the artist songs
           "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist.name,
           {
             method: "GET",
@@ -51,7 +42,6 @@ const ArtistComponent = () => {
         console.log("error");
       }
     } catch (exception) {
-      // ex.: Url is not correct, Internal Server Error
       console.log(exception);
     }
   };
@@ -65,18 +55,20 @@ const ArtistComponent = () => {
     <Col xs={12} md={{ span: 9, offset: 3 }} className="mainPage">
       <TopBarComponent></TopBarComponent>
       <Row>
-        <Col xs={12} md={10} className="mt-5">
-          <h2 className="titleMain">{artistObj.name}</h2>
-          <div id="followers">{artistObj.nb_fan}</div>
-          <div className="d-flex justify-content-center" id="button-container">
-            <Button variant="success" className="me-2 mainButton d-none" id="playButton">
-              PLAY
-            </Button>
-            <Button variant="outline-light" className="me-2 mainButton d-none" id="followButton">
-              FOLLOW
-            </Button>
-          </div>
-        </Col>
+        {artistObj && (
+          <Col xs={12} md={10} className="mt-5">
+            <h2 className="titleMain">{artistObj.name}</h2>
+            <div id="followers">{artistObj.nb_fan} followers</div>
+            <div className="d-flex justify-content-center" id="button-container">
+              <Button variant="success" className="me-2 mainButton " id="playButton">
+                PLAY
+              </Button>
+              <Button variant="outline-light" className="me-2 mainButton" id="followButton">
+                FOLLOW
+              </Button>
+            </div>
+          </Col>
+        )}
       </Row>
       <Row className="mb-3">
         <Col xs={{ span: 10, offset: 1 }} md={10} className="p-0">
@@ -84,9 +76,9 @@ const ArtistComponent = () => {
             <h2 className="text-white fw-bold">Tracks</h2>
           </div>
           <div className="pt-5 mb-5">
-            <Row id="apiLoaded">
+            <Row xs={1} sm={2} lg={3} xl={4}>
               {trackArray.length !== 0 &&
-                trackArray.map((el) => <AlbumCardComponent songInfo={el}></AlbumCardComponent>)}
+                trackArray.map((el, i) => <CardComponent songInfo={el} key={i}></CardComponent>)}
             </Row>
           </div>
         </Col>

@@ -11,13 +11,12 @@ body {
   z-index: 1200;
 }
 
-#nav-link {
+.nav-link {
   color: rgb(145, 145, 145) !important;
   transition: 0.3s;
-  padding-left: 3px;
 }
 
-#nav-link:hover {
+.nav-link:hover {
   color: white !important;
 }
 
@@ -37,27 +36,36 @@ body {
 }
 
 /* important!!! */
-#bottom-link {
+.bottom-link {
+  text-decoration: none;
   color: rgb(145, 145, 145);
 }
 
-.signup-btn {
-  width: 180px;
-  margin-bottom: 20px;
+.bottom-link:hover {
+  text-decoration: underline;
 }
 
-.signup-btn:hover {
+#signup-btn {
+  color: black;
+  width: 180px;
+  margin-bottom: 20px;
+  border: 1px solid white;
+}
+
+#signup-btn:hover {
   color: white;
   background-color: rgb(60, 211, 60);
   border: 1px solid rgb(60, 211, 60);
 }
 
-.login-btn {
+#login-btn {
+  border: 1px solid white;
+  color: white;
   width: 180px;
   margin-bottom: 20px;
 }
 
-.login-btn:hover {
+#login-btn:hover {
   color: black;
   background-color: white;
 }
@@ -100,19 +108,13 @@ body {
 
 /*MAIN PAGE SECTION*/
 
-/* .mainLinks {
-  margin-top: 1.5rem;
-  justify-content: space-evenly;
-} */
-
-#main-link {
+.main-link {
   color: white;
   font-weight: 700;
-  font-size: 12px;
   opacity: 0.3;
 }
 
-#mainLinks:hover {
+.main-link:hover {
   text-decoration: none;
   opacity: 1;
   transition: 0.3s;
