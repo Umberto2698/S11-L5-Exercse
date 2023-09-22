@@ -14,6 +14,9 @@ const initialState = {
   player: {
     content: [],
   },
+  favourite: {
+    content: [],
+  },
 };
 
 const mainReducer = (state = initialState, action) => {
@@ -45,6 +48,19 @@ const mainReducer = (state = initialState, action) => {
       return {
         ...state,
         player: { ...state.player, content: action.payload },
+      };
+    case "ADD_FAVOURITE":
+      return {
+        ...state,
+        favourite: { ...state.favourite, content: [...state.favourite.content, action.payload] },
+      };
+    case "REMOVE_FAVOURITE":
+      return {
+        ...state,
+        favourite: {
+          ...state.favourite,
+          content: state.favourite.content.filter((el) => el !== action.payload),
+        },
       };
     default:
       return state;
